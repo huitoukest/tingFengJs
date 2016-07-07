@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Porschev----无刷新翻页</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">	
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		var tingfeng={
+				  domObj:{}
+				 };
+	</script>
+	<script src="tingfengPagenation.js"></script>
+	<link href="tingfengPagenationWhite.css" rel="stylesheet">
+	<script type="text/javascript">
+	var tingfeng_pageParam={//分页的一些参数的设定,所有实现,均用div+css的方式(除开输入inpu外)
+	          	//分页数据
+				//以下是字符串变量参数
+				isServerPagenation:false,
+				content:"Pagination",//指定一个div的id,来初始化分页内容
+				orderBy:null,//升序还是降序排列
+				sort:null,//排序的字段
+				row_name:'row',//row参数传回与接收的时候显示的参数名称
+				page_name:'page',//page参数传回与接收的时候显示的参数名称
+				count_name:'count',//count参数传回与接收的时候显示的参数名称
+				orderBy_name:'orderBy',//orderBy参数传回与接收的时候显示的参数名称
+				sort_name:'sort',//sort参数传回与接收的时候显示的参数名称
+				url:'#',//分页数据url,默认跳转到当前页面
+				prev_text: '上一页',       //上一页按钮里text
+                next_text: '下一页',       //下一页按钮里text
+				goTo_text:'跳转',//跳转按钮显示文字
+				first_page_text:'首页',//首页按钮显示的文字
+				end_page_text:'尾页',////尾页按钮显示的文字								
+				ellipse_text:'......',//左右两边连续页数中间,省略的页数用什么文字表示
+                dataType:'text',//同ajax中dataType 
+				createTime:'2016-06-08',
+				author:'huitoukest',//标识作用
+				version:'1.2',
+								
+				//以下是数字变量参数
+				row:7,//每页多少行数据
+				page:1,//当前页面
+			    count:50,//后台返回的总记录数量
+				totalPage:1,//总的页数,用户无需指定,通过前台可以自己核算出来
+				num_display_left:3,//左边显示的连续页数显示按钮
+				num_display_right:2,//右边显示的连续页数显示按钮
+				timeout:50000, //加载时间,同ajax中timeout;
+				
+				//以下是布尔变量参数
+				prev_show_always:true,//是否显示“前一页”分页按钮布尔型，可选参数，
+                next_show_always:true,//默认为true，即显示“下一页”按钮
+                first_show_always:true,//是否显示首页
+				end_show_always:true,//是否显示尾页
+				showTotalPageInfo:true,//是否显示总页数信息
+				async:true,//同ajax中async
+                cache:false,//同ajax中cache
+				
+				//以下是函数function变量参数
+				onclick:function(data){
+				    alert(data);
+					return false;
+				},//点击按钮之后的回调的函数,而传回的这个data就是button的页码数值,或者用户输入的input的值,返回false可以阻止向服务器发送数据
+				success:function(data){ return tingfeng_pageParam.count;},//成功接收服务器数据之后的回调函数,data是服务器发送的数据,同ajax,同时返回总的记录数量
+				error:function(XMLHttpRequest, textStatus, errorThrown){	
+				},//连接服务器失败的回调函数,同ajax
+				beforeSend:function(XMLHttpRequest){},//同ajax中的beforeSend
+				beforeRender:function(param){return true;},//渲染分页之前调用的回调函数,返回false或者无返回值将阻止渲染,传入的参数就是系统分页对象tingfeng_pageParam			
+				totalPageInfoFunction:function(page,totalPage){
+				             return '页码:'+page+"/"+totalPage+"页";
+							},//渲染页数信息的函数,要求返回一个可包含html代码的字符串,传入当前页号,和总页数
+				params:function(){return{};},//返回分页数据需要传递的参数,除开分页信息外的参数
+                				
+	     };
+	    $(function(){
+		var pagenation=new tingfeng.domObj.pagenation(tingfeng_pageParam);
+		});		
+		
+    </script>
+</head>
+<body>
+<div align="center">
+  <h1>huitoukest wg无刷新分页插件_基于Jquery1.9.1</h1>
+</div>
+<div id="container">  
+    <div id="Pagination" align="center"></div>
+</div>
+</body>
+</html>

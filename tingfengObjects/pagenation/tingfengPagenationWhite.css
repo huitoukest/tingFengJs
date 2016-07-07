@@ -1,0 +1,20 @@
+﻿#tingfeng_pageNationTable .tingfeng_first_disable_css{color:#999;border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_num_currentPage_css{color:#FFF;background-color:#00b58c;width:30px;border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_num_display_css{width:30px;border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_pageTdDivHover{font-size:9pt;font-family:"微软雅黑";height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_prev_disable_css{border:1px solid #CCC;color:#999 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_num_display_css:hover{background-color:#f2f2f2 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_next_css{border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_end_show_css{border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_totalPageInfo_css{border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_next_css:hover{background-color:#f2f2f2 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_end_show_css:hover{background-color:#f2f2f2 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_gotoPageInput_css{text-align:center;margin:0;padding:0;height:32px;width:60px;border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_gotoPage_css{border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_gotoPage_css:hover{background-color:#f2f2f2 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_first_show_css{border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_prev_css{border:1px solid #CCC ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_first_show_css:hover{background-color:#f2f2f2 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_prev_css:hover{background-color:#f2f2f2 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_next_disable_css{border:1px solid #CCC;color:#999 ;height:26px;line-height:26px;}
+#tingfeng_pageNationTable .tingfeng_end_disable_css{border:1px solid #CCC;color:#999 ;height:26px;line-height:26px;}
