@@ -185,8 +185,16 @@ tingfeng.domObj={
 						
 					},//refresh表示是否刷新，即是否重复载入当前图片
 					show:function(index,refresh){
+						index=carousel.initIndex(index);
+						var data=carousel.datas[index];
+						carousel.showBydata(data,refresh);
+					},/**传入一个data，函数自动取得其图片url，通过url算出索引，然后展示该图片
+					 	*如果此图片不存在，那么自动加入到图片轮播组中；
+					 	*refresh表示是否刷新，即是否重复载入当前图片
+				 		*/
+					showBydata:function(data,refresh){
 						if(typeof refresh=='undefined')
-							refresh=false;
+							refresh=true;
 						//1.如果图片加载完毕，显示图片，否则显示loading
 						if(carousel.beforeShow()!='undefined'&&!carousel.beforeShow()){
 							return;
@@ -195,9 +203,15 @@ tingfeng.domObj={
 							return;
 						var isStop=!carousel.isPlaying;
 						carousel.stop();
-						index=carousel.initIndex(index);
+						var index=carousel.getIndexByData(data);
+						if(index==null)
+						{
+							carousel.addData(data);
+							index=carousel.datas.length-1;
+							//carousel.show(carousel.datas.length-1);
+						}
 						if(index-carousel.current!=0||refresh)
-						{	var data=carousel.datas[index];
+						{	//var data=carousel.datas[index];
 							var imgUrl=carousel.getImgUrls(data);
 							if(typeof carousel.imgDownArr[imgUrl]!='undefined'&&carousel.imgDownArr[imgUrl]!=null&&carousel.imgDownArr[imgUrl])
 							{	
@@ -205,24 +219,12 @@ tingfeng.domObj={
 							}else{
 								$(carousel.loadingImgObj).css('display','block');
 								$(carousel.imgObj).css('display','none');															
-							}						
+							}
 						}
 						carousel.current=index;
 						carousel.afterShow(carousel.datas[carousel.current]);
 						if(!isStop)
 							carousel.play();
-					},/**传入一个data，函数自动取得其图片url，通过url算出索引，然后展示该图片
-					 	*如果此图片不存在，那么自动加入到图片轮播组中；
-				 		*/
-					showBydata:function(data){
-						var index=carousel.getIndexByData(data);
-						if(index!=null)
-						{
-							carousel.show(index);
-						}else{
-							carousel.addData(data);
-							carousel.show(carousel.datas.length-1);
-						}
 					},
 					/**
 					 * 传入一个图片的Url，并切换,仅供show调用
