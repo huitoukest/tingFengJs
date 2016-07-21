@@ -6,6 +6,16 @@
  * @date 20160523
  */
 tingfeng.stringUtils={
+		isLocalPath:function(path){
+			if(typeof path=='undefined') return false;
+			var arr='a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z'.toLocaleUpperCase().split(',');
+			var p=path.toString().toLocaleUpperCase();
+			for(var i=0;i<arr.length;i++){
+			if(p.indexOf(arr[i]+":")>=0)
+				return true;
+			}
+			return false;
+		},
 		/**
 		 * 返回一个去掉首尾空格的字符串
 		 * @param string
