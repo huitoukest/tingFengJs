@@ -159,13 +159,13 @@ tingfeng.domObj={
 					 *传入一个data，返回其index，如果没有，返回null
 					 	*/
 					getIndexByData:function(data){
-						var imgs=carousel.imgDownArr;					
+						var imgs=carousel.datas;					
 						var url=carousel.getImgUrls(data);
 						if(url==null) return null;
 						var i=0;
-						for(var p in imgs){							
-							if(p==url&&imgs[p]!=null) return i;
-							i++;
+						for(var i=0;i<imgs.length;i++){						
+							var tmpURl=carousel.getImgUrls(imgs[i]);
+							if(tmpURl==url) return i;
 						}
 						return null;
 					},
@@ -195,12 +195,15 @@ tingfeng.domObj={
 					showBydata:function(data,refresh){
 						if(typeof refresh=='undefined')
 							refresh=true;
+						if(tingfeng.objectUtils.isEmpty(data)){
+							return;
+						}
 						//1.如果图片加载完毕，显示图片，否则显示loading
 						if(carousel.beforeShow()!='undefined'&&!carousel.beforeShow()){
 							return;
 						}						
-						if(carousel.datas.length<1)
-							return;
+						if(carousel.datas.length<=0)
+							carousel.datas=[];
 						var isStop=!carousel.isPlaying;
 						carousel.stop();
 						var index=carousel.getIndexByData(data);
@@ -210,6 +213,7 @@ tingfeng.domObj={
 							index=carousel.datas.length-1;
 							//carousel.show(carousel.datas.length-1);
 						}
+						index=carousel.initIndex(index);
 						if(index-carousel.current!=0||refresh)
 						{	//var data=carousel.datas[index];
 							var imgUrl=carousel.getImgUrls(data);
