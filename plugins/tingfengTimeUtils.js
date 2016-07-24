@@ -1,11 +1,12 @@
 
-tingfeng.timeUtils={
+tingfengF.prototype.timeUtilsF=function(){
+		var self2=this;
 		/**从毫秒转换为时间的字符串,第一个参数-->代表时间的毫秒数,wayToget--->返回的字符串方式
 		 * @param item 当前毫秒数
 		 * @param wayToget 返回的显示时间的方式,0表示年-月-日;其它如1,表示月/日/年
 		 * @returns
 		 */
-		getTime:function(item,wayToget){
+		self2.getTime=function(item,wayToget){
 			if(typeof item=='undefind'||!item)
 				return "无";
 			if(typeof item!='number')
@@ -44,7 +45,7 @@ tingfeng.timeUtils={
 	 *@param date一个时间对象
 	  @param fmt 一个格式化字符串
 	 */        
-	formate:function(date,fmt) {         
+	self2.formate=function(date,fmt) {         
 		var o = {         
 		"m+" : date.getMonth()+1, //月份         
 		"d+" : date.getDate(), //日         
@@ -83,7 +84,7 @@ tingfeng.timeUtils={
 		 * @param intervalTime
 		 * @returns Timer对象，定时器作用
 		 */
-		getTimer:function(callBack,intervalTime){
+		self2.getTimer=function(callBack,intervalTime){
 			var ti=new tingfeng.commonObj.Timer(intervalTime,callBack);
 			return ti;
 		},
@@ -92,14 +93,11 @@ tingfeng.timeUtils={
 		 *@param call 一个回调函数
 		 *@param time 在time时间之后回调call函数，单位毫秒
 		 */
-		setTimeout:function(call,time){
+		self2.setTimeout=function(call,time){
 			var call_back=function(){
 				call();
 			};
 			setTimeout(call_back(),time);
 		}
-
-		
-
 }
-
+tingfengF.prototype.timeUtils=new tingfeng.timeUtilsF();

@@ -1,8 +1,9 @@
 /**
  *保存一些数据结构中常用的对象
  */
-tingfeng.domObj={           
-            ShadeLoadingDialog:function(){
+tingfengF.prototype.domObjF=function(){
+	var self2=this;           
+           self2.ShadeLoadingDialog=function(){
                 this.timeNumber=new Date().getTime;
                 this.markId='mark_'+this.timeNumber;
                 this.divId='divDialog_'+this.timeNumber;
@@ -117,8 +118,45 @@ tingfeng.domObj={
                     HideMark();  
                 }
                 
-            },
-			Carousel:function(params){
+            };
+			/**返回一个轮播的对象，具备轮播中基本的一些方法调用
+		*采用ajax的方法后台自动加载图片； 
+		* @param params 参数见Carousel	Object
+		* @return a Carousel Object	{
+			//1表示用户初始化需要必须输入的参数，2表示可选参数，3表示用户调用的属性/方法
+			2	autoPlay:true,//是否自动播放
+			1	imgObj:null,//一个图片Jquery对象,用来加载相关的图片
+			1	loadingImgObj:null,//一个图片Jquery对象，载入轮播图片前，先播放loading图片；
+			2	current:0,//当前播放的索引,默认从0开始
+			2	datas:[],//传入的数据
+			3.	imgDownArr:{},//保存图片url以及下载的结果，以图片url为key，以其是否下载完毕为value；
+			2.	animateTime:300,//默认动画播放时间0.3秒
+			2.	intervalTime:3000,//默认播放频率,3秒一个
+			3.	setDatas:function(datas){//重新传入datas数据},
+			3.	addData:function(data){},
+			3.	removeData:function(index){//传入index，remove一个数据},
+			3.	removeDataByData:function(data){},//传入一个Data，通过计算得到其index，然后移出
+			3.	getIndexByData:function(data){},//传入一个data，返回其index，如果没有，返回null
+			1.	getImgUrls:function(data){return null;},//传入一个数组数据中的item，使用此函数得到图片的url
+			3.	showPrevious:function(){},//播放上一个图片
+			3.	showNext:function(){//播放下一个图片},
+			3.	beforeShow:function(){return true;},//返回false会阻止图片的切换
+			 //在图片url已经改变之后，在图片切换动画之前调用此函数，
+			 //方便调式图片的css等属性，传入此图片对象
+			2	whileShow:function(imgObj){},
+			//refresh表示是否刷新，即是否重复载入当前图片
+			//
+			3.	show:function(index,refresh){},
+			//传入一个data，函数自动取得其图片url，通过url算出索引，然后展示该图片如果此图片不存在，那么自动加入到图片轮播组中；
+			3.	showBydata:function(data){},
+			2.	afterShow:function(data){},
+			3.	stop:function(){},
+			3.	pause:function(){},
+			3.	play:function(){},
+			3.	setIntervalTime:function(intervalTime){},//设置播放间隔，长整型，毫秒数
+		* }
+		*/
+			self2.Carousel=function(params){
                 var carousel={
 					timer:null,//timer对象
 					autoPlay:true,
@@ -335,13 +373,13 @@ tingfeng.domObj={
 			}
 			carousel.init();
                 return carousel;
-            },
+            };
         /**
         *包含当前dom节点的绝对位置对象，包含方法调用，可以获得top，left，width，height信息
         *返回的均是数值
         *@param objId
         */
-        domSizeLocationInfo:function(objId){
+        self2.domSizeLocationInfo=function(objId){
             this.objectId=objId;
             this.getAbsoluteLeft=function() {
                 var o = document.getElementById(objectId);
@@ -386,4 +424,5 @@ tingfeng.domObj={
               return ma;
           };
         }
-}
+};
+tingfengF.prototype.domObj=new tingfeng.domObjF();

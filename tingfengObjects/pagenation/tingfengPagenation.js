@@ -1,8 +1,8 @@
 /**
 **传入Param参数和css，返回操作的对象；
 */
-tingfeng.domObj.pagenation=function(params,css){
-    var tingfeng_pageParam={//分页的一些参数的设定,所有实现,均用div+css的方式(除开输入inpu外)
+tingfeng.domObjF.prototype.pagenationF=function(params,css){
+		var tingfeng_pageParam={//分页的一些参数的设定,所有实现,均用div+css的方式(除开输入inpu外)
 	          	//分页数据
 				//以下是字符串变量参数
 				isServerPagenation:true,//默认是服务器端分页
@@ -383,7 +383,7 @@ tingfeng.domObj.pagenation=function(params,css){
                 }
            }else{//如果是服务器端分页
                var isSend=tingfeng_pageParam.beforeSend(XMLHttpRequest,tingfeng_pageParam.page);
-               if(typeof isSend!='undefined'&&isSend!=null&&false===isSend);
+               if(typeof isSend!='undefined'&&isSend!=null&&false===isSend)
                return;
                jQuery.ajax({ 
                   url: tingfeng_pageParam.url,   //提交的action 
@@ -409,7 +409,8 @@ tingfeng.domObj.pagenation=function(params,css){
 	    };	
   tingfeng_pageFunction.gotoPage(1);
   return this;
-}
+};
+tingfeng.domObjF.prototype.pagenation=new tingfeng.domObj.pagenationF();
 
 	
 

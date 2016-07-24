@@ -1,12 +1,13 @@
 /**
  *保存一些和操作普通/常用的数据结构的对象
  */
-tingfeng.dataStructuresObj={
+tingfengF.prototype.dataStructuresObjF=function(){
+        var self2=this;
 		/**
 		 * 可以简单理解为集合对象，包含一些基础的常用的方法
 		 */
-		Collection:function(){
-            var self = this;
+		self2.Collection=function(){
+            var self3 = this;
 			// 列表的元素个数
 		    this.listSize = 0;
 		    // 列表的当前位置 是第几个
@@ -15,25 +16,25 @@ tingfeng.dataStructuresObj={
 		    this.dataStore = [];           
 		    // 给列表末尾添加元素
 		    this.add=function(element){
-		        self.dataStore[sef.listSize++] = element;
+		        self3.dataStore[sef.listSize++] = element;
 		    };
 		    // 从列表中删除元素
 		    this.remove=function(element){		        
-		        var curIndex = self.find(element);
+		        var curIndex = self3.find(element);
 		        if(curIndex > -1) {
 		            sef.removeByIndex(curIndex);
-		            --self.listSize;
+		            --self3.listSize;
 		            return true;
 		        }
 		        return false;
 		    };
             this.removeByIndex=function(index){
-                self.dataStore.splice(index,1);
+                self3.dataStore.splice(index,1);
             };
 		    // 查找列表中的元素 返回索引
 		    this.find=function(element) {	        
-		        for(var i = 0,dataLen = self.dataStore.length; i < dataLen; i++) {
-		            if(self.dataStore[i] == element) {
+		        for(var i = 0,dataLen = self3.dataStore.length; i < dataLen; i++) {
+		            if(self3.dataStore[i] == element) {
 		                return i;
 		            }
 		        }
@@ -43,19 +44,19 @@ tingfeng.dataStructuresObj={
             *@param index 返回此索引所在的值
             */
             this.get=function(index){
-                return self.dataStore[index];
+                return self3.dataStore[index];
             };
 		    
 		    // 返回列表中元素的个数
 		    this.length=function() {
-		        return self.dataStore.length;
+		        return self3.dataStore.length;
 		    };
             this.isEmpty=function(){
-                return self.dataStore.length<=0;
+                return self3.dataStore.length<=0;
             }
 		    // 显示列表中的元素
 		    this.toString=function(){
-		        return self.dataStore.join(',');
+		        return self3.dataStore.join(',');
 		    };
 		    /**
 		     * 在指定元素后面插入一个元素
@@ -63,16 +64,16 @@ tingfeng.dataStructuresObj={
 		     * @param elementAfter 把当前的元素插入到此元素后面
 		     */
 		    this.insert=function(element,elementAfter){
-		        var insertPos = self.find(elementAfter);
+		        var insertPos = self3.find(elementAfter);
 		        if(insertPos > -1) {
-		            self.dataStore.splice(insertPos+1,0,element);
-		            ++self.listSize;
+		            self3.dataStore.splice(insertPos+1,0,element);
+		            ++self3.listSize;
 		            return true;
 		        }
 		        return false;
 		    };
             this.insertByIndex=function(item,index){
-                self.dataStore.splice(index+1,0,item);
+                self3.dataStore.splice(index+1,0,item);
             };
 		    // 清空列表中的所有元素
 		    this.clear=function() {
@@ -82,8 +83,8 @@ tingfeng.dataStructuresObj={
 		    };
 		    // 判断给定的元素是否在列表中
 		    this.contains=function(element) {
-		        for(var i = 0,ilen = self.dataStore.length; i < ilen; i++) {
-		            if(self.dataStore[i] == element) {
+		        for(var i = 0,ilen = self3.dataStore.length; i < ilen; i++) {
+		            if(self3.dataStore[i] == element) {
 		                return true;
 		            }
 		        }
@@ -105,7 +106,7 @@ tingfeng.dataStructuresObj={
 		    };
 		    // 将当前位置 前移一位
 		    this.next=function(){
-		        if(self.pos < self.listSize - 1) {
+		        if(self3.pos < self3.listSize - 1) {
 		            ++sef.pos;
 		        }
 		    };
@@ -115,17 +116,17 @@ tingfeng.dataStructuresObj={
 		    };
 		    // 将当前位置移动到指定位置
 		    this.moveTo=function(n) {
-		        self.pos = n;
+		        self3.pos = n;
 		    };
 		    // 返回当前位置的元素
 		    this.getElement=function(){
-		        return self.dataStore[self.pos];
+		        return self3.dataStore[self3.pos];
 		    };
             this.reverse=function(){
-                self.dataStore=tingfeng.arrayUtils.reverse(sef.dataStore);
+                self3.dataStore=tingfeng.arrayUtils.reverse(sef.dataStore);
             };
             this.getArray=function(){
-               return self.dataStore;  
+               return self3.dataStore;  
             };
             /*
             *@param compare （可选） Function(pre,next) 比较数组中两个item大小，
@@ -136,25 +137,25 @@ tingfeng.dataStructuresObj={
             },
             this.addAllArray=function(array){
                 for(var p in array){
-                    self.add(array[p]);
+                    self3.add(array[p]);
                 }
             },
             this.addAllConnection=function(conllections){
-                self.addAllArray(conllections.getdataStore);
+                self3.addAllArray(conllections.getdataStore);
             }
-		},
-		List:function(){
+		};
+		self2.List=function(){
 		   tingfeng.objectUtils.extendObjects(this,tingfeng.dataStructuresObj.Collection);
-		},
-        Set:function(){
-            var self=this;
+		};
+        self2.Set=function(){
+            var self33=this;
             tingfeng.objectUtils.extendObjects(this,tingfeng.dataStructuresObj.Collection);
             this.add=function(item){
-                if(!self.contains(item))
-                self.dataStore[sef.listSize++] = item;
+                if(!self3.contains(item))
+                self3.dataStore[sef.listSize++] = item;
             }
-        },
-       Map:function(){
+        };
+       self2.Map=function(){
                 var Entry = function(key, value){
                     this.key = key;
                     this.value = value;
@@ -228,5 +229,6 @@ tingfeng.dataStructuresObj={
                     str += ']';
                     return str;
                 };
-            },      		
-}
+            };   		
+};
+tingfengF.prototype.dataStructuresObj=new tingfeng.dataStructuresObjF();

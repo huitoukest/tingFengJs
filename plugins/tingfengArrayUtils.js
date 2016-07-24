@@ -1,28 +1,28 @@
 /**
  * @date 20160520
  */
-tingfeng.arrayUtils={
-
+tingfengF.prototype.arrayUtilsF=function(){
+		var self2=this;
 		/**通过指定函数取出数组中的对象
 		 * @param arr 传入的数组
 		 * @param eqFunction 传入数组中的对象作为参数，如果此函数返回true，则返回此对象,不存在则返回null;
 		 */
-		getObjectByFunction:function (arr,eqFunction){
+		self2.getObjectByFunction=function (arr,eqFunction){
 			var index= tingfeng.arrayUtils.getIndexByFunction(arr, eqFunction);
 			if(index==null) return null;
 			return arr[index];
 		},
-		getLengthOfArr:function(arr){
+		self2.getLengthOfArr=function(arr){
 			if(typeof arr=='undefined'||arr==null)
 				return 0;
 			return arr.length;
-		},
+		};
 		/**
 		 * 
 		 * @param arr 传入的数组
 		 * @param eqFunction 传入数组中的对象作为参数，如果此函数返回数据所在的索引,不存在则返回null;
 		 */
-		getIndexByFunction:function(arr,eqFunction){
+		self2.getIndexByFunction=function(arr,eqFunction){
 			if(typeof eqFunction=='undefined'||eqFunction==null) return eqFunction;
 			try{
 				var length=arr.length;
@@ -34,16 +34,16 @@ tingfeng.arrayUtils={
 			}catch(e){
 				return null;
 			}
-		},
+		};
 		/**
 		 * 如果存在，则更新数据，不存在则保持数据到arrry
 		 * @param arr 原本的数组
 		 * @param item 传入的数组数据
 		 * @param eqFunction 传入数组中的对象作为参数，判断两个item是否相等
 		 * @param saveIndex 如果要保存数据，保存的索引位置；
-		 * @return  while save return 1，while save return 0，else return true；
+		 * @return  while save return 1，while save return 0
 		 */
-		saveOrUpdateArray:function(arr,item,eqFunction,saveIndex){
+		self2.saveOrUpdateArray=function(arr,item,eqFunction,saveIndex){
 			var index= tingfeng.arrayUtils.getIndexByFunction(arr, eqFunction);
 				if(index==null){
 					//保存的位置如果小于数组长度，那么需要进行数据移动，以方便数据插入
@@ -57,15 +57,14 @@ tingfeng.arrayUtils={
 					arr[index]=item;
 					return 0;
 				}
-				return true;
-		},
+		};
 		/**
 		 * 向一个数组中插入输入
 		 * @param index 插入的索引
 		 * @param arry 数组
 		 * @param data 数据
 		 */
-		insertToArray:function(index,array,data){
+		self2.insertToArray=function(index,array,data){
 			if(index>array.length){
 				index=array.legnth;
 			}else if(index<0){
@@ -75,26 +74,26 @@ tingfeng.arrayUtils={
 				array[i]=array[i-1];
 			}
 			array[index]=data;
-		},
+		};
 		/**
 		 * 删除array总index所在项，返回删除后的数组；
 		 * @param index
 		 * @param array
 		 * @returns Array：[]
 		 */
-		deleteItemByIndex:function(index,array){
+		self2.deleteItemByIndex=function(index,array){
 			if(index>array.length||index<0){
 				return array;
 			}
 			array.splice(index);
-		},
+		};
 		/**
 		 * 对数组排序，会改变数组内容，默认升序排列，不传compare表示使用原生排序
 		 * @param array 数组
 		 * @param compare （可选） Function(pre,next) 比较数组中两个item大小，返回1表示pre>next;返回-1表示pre<next;返回0表示pre==next
 		 * @returns
 		 */
-		sort:function(array,compare){
+		self2.sort=function(array,compare){
 			if(tingfeng.objectUtils.isEmpty(compare)){
 				return array.sort();
 			}
@@ -111,12 +110,12 @@ tingfeng.arrayUtils={
 				}
 			}
 			return array;
-		},
+		};
 		/**
 		 * 对数组反序，会改变数组内容
 		 * @param array
 		 */
-		reverse:function(array){
+		self2=reverse=function(array){
 			for(var j=0;j<array.length/2;j++){
 				var pre=array[j];
 				var next=array[array.length-j-1];
@@ -125,6 +124,8 @@ tingfeng.arrayUtils={
 					next=pre;			
 			}
 			return array;
-		}
-}
+		};
+};
+tingfengF.prototype.arrayUtils=new tingfeng.arrayUtilsF();
+
 

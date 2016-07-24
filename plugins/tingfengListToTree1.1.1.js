@@ -2,7 +2,7 @@
  * list是后台传来的数据,inp是需要输入的参数的对象,outP是需要输出的对象的参数;
  * 先排序,再输出,所以sorWay参数应该是和outParams中的参数对应
  */
-tingfeng.arrayUtils.listToTree=function(pp){
+tingfeng.arrayUtilsF.prototype.listToTreeF=function(pp){
 
 var list=pp.list,inP=pp.inParams,outP=pp.outParams,sort=pp.sort;
 var aa=[];
@@ -196,5 +196,6 @@ function getSub(a,arr,i){
 			}   
 		}  
  return aa;
-}
+};
+tingfeng.arrayUtilsF.prototype.listToTree=new tingfeng.arrayUtils.listToTreeF();
 

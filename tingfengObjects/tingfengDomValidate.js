@@ -18,10 +18,10 @@
 *@params 表示当前传入的参数
 *@msgs 是错误提示信息
 */
-tingfeng.domObj.formValidate=function(params,msgs){	
+tingfeng.domObjF.prototype.formValidateF=function(params,msgs){	
       //错误的时候才显示的信息,只能校验32位以内的数字;
-    var self=this;  
-    self.tingfeng_validateMsg={
+    var self3=this;  
+    self3.tingfeng_validateMsg={
            "required":"必输字段", 
            "remote":"",//实际上此验证方式将会调用ajax然后回调一个用户指定的函数,由用户返回一个true或者一个包含错误信息的字符串;
            "mobile":"请输入正确的手机号",
@@ -39,7 +39,7 @@ tingfeng.domObj.formValidate=function(params,msgs){
            "extend":"",//扩展方法,传入选中的值,反对一个true,或者一个包含错误信息的字符串;
            "msg":"",//如果用户定义了msg,那么将会替换默认的msg信息;
       };
-	  self.formValidate_params={
+	  self3.formValidate_params={
 					  "justValidate":false,//只是验证,不修改和增加错误信息
 					  "isRightMsg":false,//在input的右边显示错误信息,默认为false,默认在input的下边显示错误信息!
 					  "rules":{},
@@ -53,13 +53,13 @@ tingfeng.domObj.formValidate=function(params,msgs){
 					  "author":'wg huitoukest',//此版本的remote校验方式尚未测速,不推荐使用;
 					  "isTrim":true,//校验内容的时候是否默认去掉首尾空格,仅对required和length两个属性生效
 				};
-		self.init:function(param){
+		self3.init=function(param){
 				     if(typeof param!='undefined')
 					 for(var p in param)
 					{
-					 self.params[p]=param[p];	
+					 self3.params[p]=param[p];	
 					}
-				  var pp=self.params;
+				  var pp=self3.params;
 				  var count=0;
 				  for(var p in pp.rules)
 				  {//产生其浏览次序的编号
@@ -69,30 +69,30 @@ tingfeng.domObj.formValidate=function(params,msgs){
 				  var va={
 				    formValidate_params:pp,
                     validWithMsg:function(){//返回校验结果,并显示错误信息;
-					self.formValidate_params.justValidate=false;
-					return tingfeng_rules_validateAll(self.formValidate_params);
+					self3.formValidate_params.justValidate=false;
+					return tingfeng_rules_validateAll(self3.formValidate_params);
 					},
-					valid:self.validWithOutMsg,
+					valid:self3.validWithOutMsg,
 					validWithOutMsg:function(){//返回校验结果,不显示错误信息;
-						self.formValidate_params.justValidate=true;
-					return tingfeng_rules_validateAll(self.formValidate_params);
+						self3.formValidate_params.justValidate=true;
+					return tingfeng_rules_validateAll(self3.formValidate_params);
 					},
 					clearAllMsg:function(){
-						tingfeng_clearAllValidateErrorMsg(self.formValidate_params);
+						tingfeng_clearAllValidateErrorMsg(self3.formValidate_params);
 					},//清除所有错误信息,方法				  
 				    };
 					tingfeng_validate_init(va.formValidate_params);				
 				  return tingfeng_common_clone(va);
 		};			
-	self.tingfeng_common_trim=function(v)
+	self3.tingfeng_common_trim=function(v)
 	{   return tingfeng.stringUtils.trim(v);
 	};
 	//对象深度复制
-	self.tingfeng_common_clone=function(target) {   
+	self3.tingfeng_common_clone=function(target) {   
 			return tingfeng.objectUtils.clone(target);
     };
     
-	self.tingfeng_validate_init=function(formValidate_params){
+	self3.tingfeng_validate_init=function(formValidate_params){
 	  var r=formValidate_params.rules;
 	  if(formValidate_params.validatedWhenFocus){
 		for(var p in r)
@@ -117,7 +117,7 @@ tingfeng.domObj.formValidate=function(params,msgs){
 	  }
 	};	
  	//返回校验所有的结果
-	self.tingfeng_rules_validateAll=function(formValidate_params)
+	self3.tingfeng_rules_validateAll=function(formValidate_params)
 	{ 	if(typeof r=='undefined')
 	    r={};
 		r=formValidate_params.rules;
@@ -132,7 +132,7 @@ tingfeng.domObj.formValidate=function(params,msgs){
 	  return ok;
 	};
 	
-	self.tingfeng_rules_validateOne=function(selectorString,r,formValidate_params){
+	self3.tingfeng_rules_validateOne=function(selectorString,r,formValidate_params){
 	 if(typeof r=='undefined')
 	   r={};
 	   	  //p就是选择器的内容
@@ -254,28 +254,28 @@ tingfeng.domObj.formValidate=function(params,msgs){
 		return ok;	 
 	};
 	
-	self.tingfeng_checkURL=function(URL){
+	self3.tingfeng_checkURL=function(URL){
 		return tingfeng.stringUtils.isUrl(URL);
 	}; 
 	
-	self.tingfeng_emailCheck=function(s){  
+	self3.tingfeng_emailCheck=function(s){  
 		return tingfeng.stringUtils.isEmail(s);  
 	};
 	
 	/**  
 	判断输入框中输入的日期格式为yyyy-mm-dd和正确的日期  
 	*/  
-	self.tingfeng_IsDate=function(mystring) {  
+	self3.tingfeng_IsDate=function(mystring) {  
 	    return tingfeng.stringUtils.isDate(mystring);
 	}; 
 	
 	//函数名：CheckDateTime  
 	//功能介绍：检查是否为日期时间  
-	self.tingfeng_CheckDateTime=function(str){  
+	self3.tingfeng_CheckDateTime=function(str){  
 		return tingfeng.stringUtils.isDateTime(str);
 	};  
 	//选择器,错误信息,当前校验规则的名称,用户输入的校验规则,当使用equlesTo的时候,使用的第二个选择器
-	self.tingfeng_showError=function(formValidate_params,selectorString,msg,name,value,selectorString2){
+	self3.tingfeng_showError=function(formValidate_params,selectorString,msg,name,value,selectorString2){
 		if(typeof msg==='undefined')
 	      msg=tingfeng_validateMsg[name];
 		if(Object.prototype.toString.call(value) === '[object Array]'){
@@ -314,7 +314,7 @@ tingfeng.domObj.formValidate=function(params,msgs){
 		}
 	};
 	
-	self.tingfeng_clear_errorMsg=function(formValidate_params,selectorString,selectorString2){
+	self3.tingfeng_clear_errorMsg=function(formValidate_params,selectorString,selectorString2){
 	     if(!selectorString){
 			return;
 		}
@@ -343,17 +343,17 @@ tingfeng.domObj.formValidate=function(params,msgs){
 			 }	 
 	};
 	
-	self.tingfeng_clearAllValidateErrorMsg=function(params){
+	self3.tingfeng_clearAllValidateErrorMsg=function(params){
 	 for(var p in params.rules){
 	  tingfeng_clear_errorMsg(params,p);
 	 }
    },	
-	self.tingfeng_validatemobile=function(mobile)
+	self3.tingfeng_validatemobile=function(mobile)
     {
         return tingfeng.stringUtils.isMobileNumber(mobile);
     };
 	
-	self.tingfeng_remoteValidate=function(callBack,selectorString,value,url,dataType,data,type){
+	self3.tingfeng_remoteValidate=function(callBack,selectorString,value,url,dataType,data,type){
 	 if(typeof dataType=='undefined')
 	 dataType='text';
 	 if(typeof data=='undefined')
@@ -380,5 +380,6 @@ tingfeng.domObj.formValidate=function(params,msgs){
               } 
         }); 
 	};	
-    return self;
-}
+    return self3;
+};
+tingfeng.domObjF.prototype.formValidate=new tingfeng.domObj.formValidateF();

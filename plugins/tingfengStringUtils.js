@@ -5,8 +5,9 @@
  * 使用toXXX来将string转换为其他对象
  * @date 20160523
  */
-tingfeng.stringUtils={
-		isLocalPath:function(path){
+tingfengF.prototype.stringUtilsF=function(){
+		var self2=this;
+		self2.isLocalPath=function(path){
 			if(typeof path=='undefined') return false;
 			var arr='a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z'.toLocaleUpperCase().split(',');
 			var p=path.toString().toLocaleUpperCase();
@@ -15,14 +16,14 @@ tingfeng.stringUtils={
 				return true;
 			}
 			return false;
-		},
+		};
 		/**
 		 * 返回一个去掉首尾空格的字符串
 		 * @param string
 		 * @param isAutoConvertion 传入true的时候,undefined和null返回空串'';否则返回原值,默认自动转换
 		 * @returns
 		 */
-		trim:function(string,isAutoConvertion)
+		self2.trim=function(string,isAutoConvertion)
 		{  var isNullString=(typeof string=="undefined"||string==null);
 		    if(typeof isAutoConvertion!='undefined')
 		    	isAutoConvertion=true;
@@ -37,13 +38,13 @@ tingfeng.stringUtils={
 		    	string=string.toString();
 		    	var ss=string.replace(/(^\s*)|(\s*$)/g,"");
 		     return ss;
-		},
+		};
 		/**
 		**@param srcStr
 		 *@param isAutoConvertion 传入true的时候,undefined和null使用串'0';否则返回原值,默认自动转换
 		*通过去掉字符串中的非小数点和数字字符，得到字符串中的数字；
 		*/
-		getNumberByString:function(srcStr,isAutoConvertion){
+		self2.getNumberByString=function(srcStr,isAutoConvertion){
 				var string=srcStr;
 				var isNullString=(typeof string=="undefined"||string==null);
 				if(typeof isAutoConvertion!='undefined')
@@ -56,8 +57,8 @@ tingfeng.stringUtils={
 				value=value.replace(/(^[.]+)/g,"");
 				value=value.replace(/([.]+$)/g,"");	
 				return new Number(value);
-		},
-        isUrl:function(URL){
+		};
+        self2.isUrl=function(URL){
             var str=URL;
             //判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
             //下面的代码中应用了转义字符"\"输出一个字符"/"
@@ -68,36 +69,34 @@ tingfeng.stringUtils={
             }else{
                 return false;
             }
-	   },
-        isEmail:function(str){  
+	   };
+        self2.isEmail=function(str){  
             var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  
             if (!pattern.test(str)) {
                 return false;  
             }  
             return true;
-        },
-	   startWith:function(src,str){
+        };
+	   self2.startWith=function(src,str){
 			if(str==null||str==""||src.length==0||str.length>src.length)
 			  return false;
 			if(src.substr(0,str.length)==str)
 			  return true;
 			else
 			  return false;
-			return true;
-		},
-		endWith:function(src,str){
+		};
+		self2.endWith=function(src,str){
 			if(str==null||str==""||src.length==0||str.length>src.length)
 			  return false;
 			if(src.substring(src.length-str.length)==str)
 			  return true;
 			else
 			  return false;
-			return true;
-		},
+		};
         /**
         *判断输入框中输入的日期格式为yyyy-mm-dd和正确的日期
         **/
-        isDate:function(mystring){  
+       self2.isDate=function(mystring){  
             if(mystring.length<8||mystring.length>10)
             return false;
             mystring=mystring.split("-");
@@ -107,11 +106,11 @@ tingfeng.stringUtils={
             //console.info(new Date(mystring).getDate());
             //console.info(mystring.substring(mystring.length-2));
             return (sysDate==userDate)||((",")+sysDate==userDate); 
-        },
+        };
         /**函数名：CheckDateTime  
         *功能介绍：检查是否为日期时间yyyy-mm-dd HH:MM:SS
         **/
-      isDateTime:function(str){  
+      self2.isDateTime=function(str){  
             var reg = /^(\d+)-(\d{1,2})-(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/;  
             var r = str.match(reg);  
             if(r==null)return false;  
@@ -124,8 +123,8 @@ tingfeng.stringUtils={
             if(d.getMinutes()!=r[5])return false;  
             if(d.getSeconds()!=r[6])return false;  
             return true;  
-        },
-      isMobileNumber:function(mobile)
+        };
+      self2.isMobileNumber=function(mobile)
         {
             if(mobile.length==0)
             {
@@ -142,21 +141,21 @@ tingfeng.stringUtils={
                 return false;
             }
             return true;
-        },
+        };
 		/**
 		 * 
 		 * @param string string这个变量是否定义,是否为null,是否是个空串
 		 * @returns {Boolean}
 		 */
-		isEmpty:function(string){
+		self2.isEmpty=function(string){
 			var len=tingfeng.stringUtils.trim(string.toString());
 			if((typeof string==='undefined')||string==null||len.length<1)
 				{ 
 				 return true;
 				}
 			return false;
-		},
-		toJson:function(data)
+		};
+		self2.toJsonObj=function(data)
 		{	
 			if(typeof data!='object')
 				{//如果不是Json数据,那么转换成为JSON
@@ -167,12 +166,12 @@ tingfeng.stringUtils={
 					}
 				}
 			return data;
-		},
+		};
 		/**
 		 * 将字符串中的<>等html元素转换为相关转意符号
 		 * @param string
 		 */
-		getHtmlString:function(string){
+		self2.getHtmlString=function(string){
 			if(tingfeng.stringUtils.isEmpty(string))
 				return "";
 			var tmpData=string;
@@ -182,11 +181,11 @@ tingfeng.stringUtils={
 			tmpData=tmpData.replace(/\n/g,"<br/>");
 			tmpData=tmpData.replace(/[ ]/g,"&emsp;");
 			return tmpData;
-		},
+		};
 		/**
 		 * @return s获取项目根路径，如： http://localhost:8083/uimcardprj
 		 */
-		getRootPath:function(){
+		self2.getRootPath=function(){
 		    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
 		    var curWwwPath=window.document.location.href;
 		    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
@@ -197,13 +196,13 @@ tingfeng.stringUtils={
 		    //获取带"/"的项目名，如：/uimcardprj
 		    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
 		    return(localhostPaht+projectName);
-		},
+		};
 		/**
 		 * 
 		 * @param str
 		 * @returns {Number}
 		 */
-		getHashCode:function(str){
+		self2.getHashCode=function(str){
 	        var h = 0;
 	        var len = str.length;
 	        var t = 2147483648;
@@ -212,13 +211,13 @@ tingfeng.stringUtils={
 	            if(h > 2147483647) h %= t;//java int溢出则取模
 	        }
 	        return h;
-	    },
+	    };
 		/**
 		 * MD5加密,加密后为32为小写字符串
 		 * @param string 传入需要加密的字符串
 		 * @return MD5加密,加密后为32为小写字符串
 		 */
-		getMD5String:function(string) {
+		self2.getMD5String=function(string) {
 				  
 			    function RotateLeft(lValue, iShiftBits) {
 			        return (lValue<<iShiftBits) | (lValue>>>(32-iShiftBits));
@@ -421,5 +420,6 @@ tingfeng.stringUtils={
 			  
 			    return temp.toLowerCase();
 			}		
-}
+};
+tingfengF.prototype.stringUtils=new tingfeng.stringUtilsF();
 

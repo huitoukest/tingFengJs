@@ -1,4 +1,5 @@
-tingfeng.webUtils={
+tingfengF.prototype.webUtilsF=function(){
+	var self2=this;
 	/**
 	 * 得到一个webSocket的通信对象,浏览器不支持时返回null
 	 * @param params 初始化webSocket的各种参数；
@@ -9,7 +10,7 @@ tingfeng.webUtils={
 			  onClose:function(evt);
 			  }
 	 */
-	getWebSocket:function(params){
+	self.getWebSocket=function(params){
 		var getOrElse=tingfeng.objectUtils.getOrElse;
 		if(typeof params=='undefined'||params==null)
 			params={};
@@ -39,25 +40,24 @@ tingfeng.webUtils={
 		 ws.onmessage =p.onMessage;
          ws.onclose =p.onClose;
          return ws;
-	},
+	};
 	/**
 	 * return 当前浏览器是否支持webSocket功能
 	 */
-	isSupportWebSocket:function(){
+	self.isSupportWebSocket=function(){
 		var bb=false;
 		if ('WebSocket' in window)
             bb=true;
         else if ('MozWebSocket' in window)
            bb=true;
 		return bb;
-	},
+	};
 	/**
 	 * 动态载入css或者js文件;
 	 * @param url
 	 * @param timeout
 	 */
-	dynamicLoading:tingfeng.dynamicLoading,
-	
-	
-}
+	self.dynamicLoading=tingfeng.dynamicLoading;
+};
+tingfengF.prototype.webUtils=new tingfeng.webUtilsF();
 

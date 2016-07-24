@@ -1,7 +1,8 @@
 /**
  *保存一些普通的，基础的工具对象
  */
-tingfeng.commonObj={
+tingfengF.prototype.commonObjF=function(){
+		var self2=this;
 		/**
 		 * 
 		 * @param intervalTime 每隔intervalTime的时间运行一次定时器
@@ -9,7 +10,7 @@ tingfeng.commonObj={
 		 * @param exeCount 执行的最大次数
 		 * @returns Timer Object
 		 */
-		Timer:function(intervalTime,callBack,exeCount){
+		self2.Timer=function(intervalTime,callBack,exeCount){
 			var timer={	 
 			/**是否是存活/播放状态
 				   * */
@@ -102,6 +103,6 @@ tingfeng.commonObj={
 			timer.init(callBack, intervalTime);
 			timer.exeCount=exeCount;
 			return timer;
-		},
-			
-}
+		};			
+};
+tingfengF.prototype.commonObj=new tingfeng.commonObjF();
