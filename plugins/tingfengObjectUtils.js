@@ -45,6 +45,9 @@ tingfengF.prototype.objectUtilsF=function(){
 				return true;
 			return false;
 		};
+		self2.isNotEmpty=function(object){
+			return !self2.isEmpty(object);
+		};
         /**使subObj继承指定的父functions，同名方法，会被后面的父function覆盖；
 		 * @subObj当前子对象的this;
          * @parentFnArrays 一个父function的数组
